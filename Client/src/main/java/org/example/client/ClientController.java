@@ -34,5 +34,4 @@ public class ClientController {
         service.RemoveClient(id);
     }
 
-
 }
