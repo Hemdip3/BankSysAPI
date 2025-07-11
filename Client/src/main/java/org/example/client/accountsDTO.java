@@ -1,14 +1,14 @@
 package org.example.client;
 
 
-public class SavingsDTO {
+public class accountsDTO {
     private int clientID;
     private double balance=0;
 
-    public SavingsDTO() {
+    public accountsDTO() {
     }
 
-    public SavingsDTO(int clientID, double balance) {
+    public accountsDTO(int clientID, double balance) {
         this.clientID = clientID;
         this.balance = balance;
     }

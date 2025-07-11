@@ -18,6 +18,11 @@ public class ClientController {
         return service.addClient(client);
     }
 
+    @PostMapping("/add/{type}")
+    public Client addClient(@PathVariable String type, @RequestBody Client client){
+        return service.addClient(type, client);
+    }
+
     @GetMapping("/get")
     public List<Client> getClient() {
         return service.getClients();

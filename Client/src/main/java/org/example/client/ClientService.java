@@ -13,21 +13,8 @@ public class ClientService {
 
     public Client addClient(Client client){
 
-        repo.save(client);
+        return repo.save(client);
 
-        SavingsDTO savings= new SavingsDTO();
-        savings.setClientID(client.getId());
-        savings.setClientID(0);
-
-        WebClient.create()
-                .post()
-                .uri("http://localhost:8080/savings/add")
-                .bodyValue(savings)
-                .retrieve()
-                .bodyToMono(Void.class)
-                .block();
-
-        return client;
     }
 
     public List<Client> getClients(){
@@ -49,16 +36,19 @@ public class ClientService {
         return repo.save(c);
     }
 
-    public Client createSavings(Client client){
+    public Client addClient(String type, Client client)
+    {
 
+        repo.save(client);
+        String url = "http://localhost:8080/" + type + "/add";
 
-        SavingsDTO savings= new SavingsDTO();
+        accountsDTO savings= new accountsDTO();
         savings.setClientID(client.getId());
-        savings.setClientID(0);
+        savings.setBalance(100);
 
         WebClient.create()
                 .post()
-                .uri("http://localhost:8080/savings/add")
+                .uri(url)
                 .bodyValue(savings)
                 .retrieve()
                 .bodyToMono(Void.class)
