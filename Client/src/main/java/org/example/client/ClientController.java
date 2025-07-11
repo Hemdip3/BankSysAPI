@@ -2,7 +2,6 @@ package org.example.client;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -35,8 +34,18 @@ public class ClientController {
 
     @DeleteMapping("/delete/{id}")
     public void deleteClient(@PathVariable int id) {
-
         service.RemoveClient(id);
     }
+    @PutMapping("/{name}/{accountType}/{type}/{amount}")
+    public double performTransaction(
+            @PathVariable String name,
+            @PathVariable String accountType,
+            @PathVariable String type,
+            @PathVariable double amount) {
+
+        return service.transaction(name, accountType, type, amount);
+    }
+
+
 
 }

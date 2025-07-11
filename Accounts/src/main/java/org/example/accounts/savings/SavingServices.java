@@ -27,7 +27,7 @@ public class SavingServices {
     }
 
     public double deposit(int id, double amount){
-        Savings account = repo.findById(id).orElseThrow();
+        Savings account = repo.findByClientID(id);
         double newBalance = account.getBalance() +amount;
         account.setBalance(newBalance);
         repo.save(account);
@@ -36,7 +36,7 @@ public class SavingServices {
 
     public double withdraw(int id, double amount){
 
-        Savings account = repo.findById(id).orElseThrow();
+        Savings account = repo.findByClientID(id);;
         double newBalance = account.getBalance() -amount;
         account.setBalance(newBalance);
         repo.save(account);

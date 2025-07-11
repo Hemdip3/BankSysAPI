@@ -26,16 +26,19 @@ public class CurrentServices {
     }
 
     public double deposit(int id, double amount){
-        Current account = repo.findById(id).orElseThrow();
+        Current account = repo.findByClientID(id);
         double newBalance = account.getBalance() +amount;
         account.setBalance(newBalance);
         repo.save(account);
         return newBalance;
     }
 
+
+
+
     public double withdraw(int id, double amount){
 
-        Current account = repo.findById(id).orElseThrow();
+        Current account = repo.findByClientID(id);;
         double newBalance = account.getBalance() -amount;
         account.setBalance(newBalance);
         repo.save(account);

@@ -1,5 +1,7 @@
 package org.example.client;
 
+import org.springframework.context.annotation.Bean;
+
 
 public class accountsDTO {
     private int clientID;

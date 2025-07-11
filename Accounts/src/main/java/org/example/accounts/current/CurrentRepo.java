@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CurrentRepo extends JpaRepository<Current,Integer> {
+    Current findByClientID(int clientID);
 }
