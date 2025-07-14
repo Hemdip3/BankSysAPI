@@ -65,20 +65,20 @@ public class ClientService {
         return client;
 
     }
-
-    public double transaction(String name,String accountType,String type, double amount){
-
-        Client client = repo.findByFirstName(name);
-        int id = client.getId();
-
-        String url = "http://localhost:8080/" + accountType +"/"+ type +"/"+ id+"/"+amount;
-
-        return WebClient.create()
-                .put()
-                .uri(url)
-                .retrieve()
-                .bodyToMono(Double.class)
-                .block();
-    }
+//
+//    public double transaction(String name,String accountType,String type, double amount){
+//
+//        Client client = repo.findByFirstName(name);
+//        int id = client.getId();
+//
+//        String url = "http://localhost:8080/" + accountType +"/"+ type +"/"+ id+"/"+amount;
+//
+//        return WebClient.create()
+//                .put()
+//                .uri(url)
+//                .retrieve()
+//                .bodyToMono(Double.class)
+//                .block();
+//    }
 
 }

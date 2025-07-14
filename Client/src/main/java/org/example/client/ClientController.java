@@ -36,15 +36,15 @@ public class ClientController {
     public void deleteClient(@PathVariable int id) {
         service.RemoveClient(id);
     }
-    @PutMapping("/{name}/{accountType}/{type}/{amount}")
-    public double performTransaction(
-            @PathVariable String name,
-            @PathVariable String accountType,
-            @PathVariable String type,
-            @PathVariable double amount) {
-
-        return service.transaction(name, accountType, type, amount);
-    }
+//    @PutMapping("/{name}/{accountType}/{type}/{amount}")
+//    public double performTransaction(
+//            @PathVariable String name,
+//            @PathVariable String accountType,
+//            @PathVariable String type,
+//            @PathVariable double amount) {
+//
+//        return service.transaction(name, accountType, type, amount);
+//    }
 
 
 
