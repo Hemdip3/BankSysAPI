@@ -1,7 +1,5 @@
 package org.example.accounts.savings;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,8 +7,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/savings")
 public class SavingsController {
-    @Autowired
-    private SavingServices service;
+
+    private final SavingServices service;
+
+    public SavingsController(SavingServices service) {
+        this.service = service;
+    }
 
     @PostMapping("/add")
     public Savings addAccount(@RequestBody Savings account){

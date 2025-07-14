@@ -1,7 +1,6 @@
 package org.example.accounts.current;
 
-import org.example.accounts.savings.Savings;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,8 +8,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/current")
 public class CurrentController {
-    @Autowired
-    private CurrentServices service;
+
+    private final CurrentServices service;
+
+    public CurrentController(CurrentServices service) {
+        this.service = service;
+    }
 
     @PostMapping("/add")
     public Current addAccount(@RequestBody Current account){

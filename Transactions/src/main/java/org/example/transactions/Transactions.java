@@ -13,10 +13,19 @@ public class Transactions {
     @GeneratedValue
     int transactionId;
     int clientId;
+    String accountType;
+    String transactionType;
     Double amount;
 
     public Transactions(){
 
+    }
+
+    public Transactions( String accountType, String transactionType,int clientId, Double amount) {
+        this.clientId = clientId;
+        this.accountType = accountType;
+        this.transactionType = transactionType;
+        this.amount = amount;
     }
 
     public Transactions(int clientId, Double amount) {

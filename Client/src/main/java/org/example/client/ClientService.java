@@ -1,6 +1,7 @@
 package org.example.client;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.transaction.Transactional;
+
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -8,10 +9,12 @@ import java.util.List;
 
 @Service
 public class ClientService {
-    @Autowired
-    public ClientRepo repo;
 
+    private final ClientRepo repo;
 
+    public ClientService(ClientRepo repo){
+        this.repo = repo;
+    }
 
 
     public Client addClient(Client client){
@@ -43,6 +46,7 @@ public class ClientService {
 
 
 
+    @Transactional
     public Client addClient(String type, Client client)
     {
 

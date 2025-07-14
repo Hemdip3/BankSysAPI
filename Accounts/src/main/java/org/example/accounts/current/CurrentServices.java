@@ -1,17 +1,19 @@
 package org.example.accounts.current;
 
-import org.example.accounts.savings.Savings;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class CurrentServices {
-    private Current account;
-    @Autowired
-    private CurrentRepo repo;
-    private double amount;
+
+
+    private final CurrentRepo repo;
+
+    public CurrentServices(CurrentRepo repo) {
+        this.repo = repo;
+    }
 
     public Current addAccount(Current account){
         return repo.save(account);
@@ -38,7 +40,7 @@ public class CurrentServices {
 
     public double withdraw(int id, double amount){
 
-        Current account = repo.findByClientID(id);;
+        Current account = repo.findByClientID(id);
         double newBalance = account.getBalance() -amount;
         account.setBalance(newBalance);
         repo.save(account);

@@ -1,6 +1,6 @@
 package org.example.client;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -8,9 +8,12 @@ import java.util.List;
 @RequestMapping("/client")
 public class ClientController {
 
-    @Autowired
-    private ClientService service;
 
+    private final ClientService service;
+
+    public ClientController(ClientService service) {
+        this.service = service;
+    }
 
     @PostMapping("/add")
     public Client addClient(@RequestBody Client client) {
