@@ -1,8 +1,7 @@
 package org.example.accounts.savings;
 
-import jakarta.persistence.Id;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,13 +33,16 @@ public class SavingServices {
         return newBalance;
     }
 
-    public double withdraw(int id, double amount){
+    public String withdraw(int id, double amount){
 
-        Savings account = repo.findByClientID(id);;
-        double newBalance = account.getBalance() -amount;
-        account.setBalance(newBalance);
-        repo.save(account);
-        return newBalance;
+        if(repo.findByClientID(id).getBalance()-amount<0) {
+            Savings account = repo.findByClientID(id);
+            double newBalance = account.getBalance() - amount;
+            account.setBalance(newBalance);
+            repo.save(account);
+            return String.valueOf(newBalance);
+        }
+        return "insufficient account balance";
     }
 
 

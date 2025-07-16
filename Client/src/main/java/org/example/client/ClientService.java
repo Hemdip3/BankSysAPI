@@ -33,8 +33,6 @@ public class ClientService {
 
     public Client updateClient(Client client) {
 
-
-
         Client c = repo.getReferenceById(client.getId());
 
         c.setFirstName(client.getFirstName());

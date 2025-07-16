@@ -36,7 +36,7 @@ public class CurrentController {
     }
 
     @PutMapping("/withdraw/{id}/{amount}")
-    public Double withdraw(@PathVariable int id,@PathVariable double amount){
+    public String withdraw(@PathVariable int id,@PathVariable double amount){
         return service.withdraw(id, amount);
     }
 }
